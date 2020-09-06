@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .nav-link {
+            font-size: 22px;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+        }
+    </style>
+    <title>Your Profile</title>
+</head>
+
+<body>
+    {{>dashboard_nav}}
+    <div class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="border p-5">
+                        <h1 class="display-4 text-center mb-5 heading" data-edit_path={{edit_path}}>Profile</h1>
+                        {{#if profile_messages}}
+                        {{#each profile_messages}}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{this}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {{/each}}
+                        {{/if}}
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center name">
+                                Name: {{name}}
+                                <button class="btn btn-link" data-toggle="modal"
+                                    data-target="#nameEditModal">edit</button>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center email">
+                                Email: {{email}}
+                                <button class="btn btn-link" data-toggle="modal"
+                                    data-target="#emailEditModal">edit</button>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Password: ********
+                                <button class="btn btn-link" data-toggle="modal"
+                                    data-target="#passwordEditModal">edit</button>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Account
+                                <button class="btn btn-danger" data-toggle="modal"
+                                    data-target="#accountDeleteModal">Delete</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="nameEditModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="newName">Name</label>
+                            <input id="newName" type="text" name="newName" placeholder="Enter new name"
+                                class="form-control">
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary save_name" data-dismiss="modal">Save
+                            changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="emailEditModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Email</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="newEmail">Email</label>
+                            <input id="newEmail" type="text" name="newEmail" placeholder="Enter new email"
+                                class="form-control">
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary save_email" data-dismiss="modal">Save
+                            changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="passwordEditModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="newPassword_1">New Password</label>
+                            <input id="newPassword_1" type="password" placeholder="Enter new password"
+                                class="form-control">
+                            <label for="newPassword_2">Confirm Password</label>
+                            <input id="newPassword_2" type="password" placeholder="Confirm password"
+                                class="form-control">
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary save_password" data-dismiss="modal">Save
+                            changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="accountDeleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <p class="lead">Are you sure you want to discontinue our services?</p>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO!</button>
+                        <button type="submit" class="btn btn-primary delete_account" data-dismiss="modal">YES</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="/js/easyHttp.js"></script>
+    <script src="/js/profile.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style>
+    .nav-link {
+      font-size: 22px;
+    }
+
+    .navbar-brand {
+      font-size: 22px;
+    }
+
+    .lead {
+      font-size: 32px;
+    }
+
+    .add-task__container {
+      text-align: center;
+    }
+
+    .add-task {
+      padding: 8px 32px;
+    }
+
+    .add-task:hover {
+      background-color: rgb(6, 62, 94);
+    }
+  </style>
+  <title>Tasks Dashboard</title>
+</head>
+
+<body>
+  {{>dashboard_nav}}
+  <div class="container">
+    <h1 class="display-4 my-5">Welcome!! {{name}}</h1>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <p class="lead text-success">Completed Tasks: <span class="completed_tasks">0</span></p>
+        <p class="lead text-danger">Incompleted Tasks: <span class="incompleted_tasks">0</span></p>
+      </li>
+    </ul>
+    <div class="add-task__container">
+      <button class="btn btn-lg btn-info my-3 add-task" data-toggle="modal" data-target="#addTaskModal">Add
+        Task!!</button>
+    </div>
+    <hr class="my-4">
+    <section id="tasks">
+      <ul class="list-group my-5 task-list">
+        {{!-- <li class="list-group-item bg-light">
+          <p>List Item<a href="#"><span class="close">&times;</span></a></p>
+        </li> --}}
+      </ul>
+    </section>
+
+    <div class="modal fade" id="addTaskModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="newTask">Description</label>
+                <input id="newTask" type="text" name="newTask" placeholder="Enter Task Description"
+                  class="form-control">
+              </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary save_task" data-dismiss="modal">Save
+                Task</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="/js/easyHttp.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+
+</html>
