@@ -1,6 +1,6 @@
 const keys = {
-    mongoose: "mongodb+srv://antony:ant123456@abl-3aejj.mongodb.net/task-manager",
-    signature: "taskmanagersignature",
+  mongoose: "Add your mongodb url",
+  signature: "Add your own signature",
 };
 
 module.exports = keys;
